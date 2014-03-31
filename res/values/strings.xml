@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Профком дисконт</string>
+    <string name="test">Показать все скидки</string>
+    <string name="action_settings">Настройки</string>
+    <string name="o_profkome"><p align="justify">Первичная организация студентов федерального государственного бюджетного образовательного учреждения высшего профессионального образования «Смоленский государственный университет» Профессионального союза работников народного образования и науки Российской Федерации. Краткое название: "Профком студентов СмолГУ".
+        Область деятельности: представительство студенчества и защита прав студентов. В настоящее время наш студенческий профсоюз охватывает 4000 студентов что составляет 98 % от обучающихся в вузе. Студенты это молодые люди в возрасте от 17 до 23 лет. Основной структурой Профсоюзной организации студентов СмолГУ являются профсоюзные группы, которые формируются в учебных группах университета.</p>
+    </string>
+    <string name="o_programme"><p align="justify">Усачев Виктор. Физмат СмолГУ</p></string>
+    
+        <!-- Nav Drawer Menu Items -->
+    <string-array name="nav_drawer_items">
+        <item >Скидки</item>
+        <item >Карта скидок</item>
+        <item >О профкоме</item>
+        <item >О программе</item>
+        <item >Рассказать друзьям</item>
+        <item >Выход</item>
+    </string-array>
+    
+    <!-- Nav Drawer List Item Icons -->
+    <!-- Keep them in order as the titles are in -->
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_action_labels</item>
+        <item>@drawable/ic_action_place</item>
+        <item>@drawable/ic_action_warning</item>
+        <item>@drawable/ic_action_about</item>
+        <item>@drawable/ic_action_share</item>
+        <item>@drawable/ic_whats_hot</item>
+    </array>
+
+     <!-- Content Description -->
+    <string name="desc_list_item_icon">Item Icon</string>
+    
+</resources>

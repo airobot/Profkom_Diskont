@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="ru.smolgu.Profkom_Diskont"
+    android:installLocation="auto"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" >
+    </uses-feature>
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="19" />
+
+    <permission
+        android:name="ru.smolgu.Profkom_Diskont.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WAKE_LOCK" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.INTERNET" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="ru.smolgu.Profkom_Diskont.permission.MAPS_RECEIVE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name" >
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBm5PEN9RvVk2KVOI_wmcTcIKEva3sw-Fw" >
+        </meta-data>
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:minResizeHeight="72dip"
+            android:minResizeWidth="72dip"
+            android:resizeMode="horizontal|vertical"
+            android:value="@integer/google_play_services_version" >
+        </meta-data>
+
+        <activity
+            android:name="MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".DiscontFragment"
+            android:label="Скидки"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ProfkomFragment"
+            android:icon="@drawable/o_profkome"
+            android:label="О Профкоме"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OProgramFragment"
+            android:icon="@drawable/o_programme"
+            android:label="О Программе"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SplashScreen"
+            android:noHistory="true" >
+            <intent-filter>
+                <action android:name="com.tutorial.CLEARSCREEN" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MapFragmentAll"
+            android:icon="@drawable/ic_action_place"
+            android:label="Карта скидок"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MapFragmentViewDiskont"
+            android:icon="@drawable/ic_action_place"
+            android:label="Скидка на карте"
+            android:screenOrientation="portrait" />
+    </application>
+
+</manifest>
