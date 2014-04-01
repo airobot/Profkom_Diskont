@@ -216,7 +216,7 @@ public class MainActivity extends Activity {
 		  shareIntent.putExtra(Intent.EXTRA_TEXT, "Я пользуюсь приложением #ПрофкомДисконт на #Android!");
 		  startActivity(Intent.createChooser(shareIntent, "Рассказать друзьям"));
 	}
-
+	
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;

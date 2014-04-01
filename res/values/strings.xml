@@ -4,8 +4,7 @@
     <string name="app_name">Профком дисконт</string>
     <string name="test">Показать все скидки</string>
     <string name="action_settings">Настройки</string>
-    <string name="o_profkome">
-<![CDATA[
+    <string name="o_profkome"><![CDATA[
 <html>
  <head></head>
  <body style="text-align:justify;color:gray;background-color:black;">
