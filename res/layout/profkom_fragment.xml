@@ -19,15 +19,15 @@
             android:layout_marginTop="5dp"
             android:background="@drawable/profkom_logo" />
 
-        <TextView
+        <WebView
+            android:id="@+id/text_o_profkom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="fill"
-            android:padding="10dp"
             android:text="@string/o_profkome"
-            android:textColor="#ff000000"
             android:textSize="18sp"
-            android:typeface="sans" />
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            />
 
         <Button
             android:id="@+id/btn_site_profkom"

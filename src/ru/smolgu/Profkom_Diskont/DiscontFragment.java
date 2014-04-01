@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.view.MenuItem;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -41,14 +42,17 @@ public class DiscontFragment extends Activity {
 		String text = intent.getStringExtra("text");
 		textView.setText(Html.fromHtml(text));
 		
-
+//		WebView webWiew = (WebView)findViewById(R.id.text_o_profkom);
+//		webWiew.loadData(getString(R.string.o_programme), "text/html", "utf-8");
+		
+//		WebView view = (WebView)findViewById(R.id.text_o_profkom);
+//	    view.loadData(getString(R.string.o_programme), "text/html", "utf-8");
+		
 		Diskont_Data = (DiskontData) ((SharableObject) intent
 				.getParcelableExtra("phone")).getObject();
 		Button bnt_phone = (Button) findViewById(R.id.btn_telefon);
-
 		Button bnt_map_diskont = (Button) findViewById(R.id.btn_map_diskont);
 		
-
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
 		final String[] items = new String[Diskont_Data.telnum.size()];
 		for (int i = 0; i < Diskont_Data.telnum.size(); i++) {
