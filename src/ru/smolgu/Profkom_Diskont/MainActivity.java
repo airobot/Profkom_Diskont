@@ -174,7 +174,7 @@ public class MainActivity extends Activity {
 			MapFragment();
 			break;
 		case 2:
-			fragment = new ProfkomFragment();
+			ProfkomFragment();
 			break;
 		case 3:
 			fragment = new OProgramFragment();
@@ -204,7 +204,12 @@ public class MainActivity extends Activity {
 			Log.e("MainActivity", "Error in creating fragment");
 		}
 	}
-
+	
+	private void ProfkomFragment() {
+		Intent intent = new Intent(this, ProfkomFragment.class);
+		startActivity(intent);
+	}
+	
 	private void MapFragment() {
 		Intent intent = new Intent(this, MapFragmentAll.class);
 		startActivity(intent);

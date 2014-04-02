@@ -1,33 +1,33 @@
 package ru.smolgu.Profkom_Diskont;
 
-import android.app.Fragment;
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.Html;
-import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ProfkomFragment extends Fragment {
+public class ProfkomFragment extends Activity {
 
-	public ProfkomFragment() {
-	}
-
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
-		View rootView = inflater.inflate(R.layout.profkom_fragment, container,
-				false);
-//		TextView textWebView = (TextView)rootView.findViewById(R.id.o_profkom);
-//		textWebView.setText(Html.fromHtml(getString(R.string.o_profkome)));
+	String Text;
+	
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.profkom_fragment);
+		// Создание кнопки назад. 
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		Intent intent = getIntent();
 		
-		Button b_s_p = (Button) rootView.findViewById(R.id.btn_site_profkom);
-		Button b_vk = (Button) rootView.findViewById(R.id.btn_vk);
-		Button b_ins = (Button) rootView.findViewById(R.id.btn_ins);
-		Button b_tw = (Button) rootView.findViewById(R.id.btn_tw);
+		TextView textView = (TextView)findViewById(R.id.o_profkom);
+		textView.setText(Html.fromHtml(getString(R.string.o_profkome)));
+
+		Button b_s_p = (Button) findViewById(R.id.btn_site_profkom);
+		Button b_vk = (Button) findViewById(R.id.btn_vk);
+		Button b_ins = (Button) findViewById(R.id.btn_ins);
+		Button b_tw = (Button) findViewById(R.id.btn_tw);
 		
 		b_s_p.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -66,6 +66,16 @@ public class ProfkomFragment extends Fragment {
 				startActivity(myWebLink_tw);
 			}
 		});
-		return rootView;
+	}
+	
+	@Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+        case android.R.id.home:
+            finish();
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
 	}
 }
