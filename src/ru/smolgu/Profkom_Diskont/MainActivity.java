@@ -3,6 +3,7 @@ package ru.smolgu.Profkom_Diskont;
 import java.util.ArrayList;
 
 import ru.smolgu.Profkom_Diskont.nav.NavDrawerItem;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -14,28 +15,25 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
-
+@SuppressLint("NewApi")
 public class MainActivity extends Activity {
-	
+
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
-
 	// nav drawer title
 	private CharSequence mDrawerTitle;
-
 	// used to store app title
 	private CharSequence mTitle;
-
 	// slide menu items
 	private String[] navMenuTitles;
 	private TypedArray navMenuIcons;
-
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 
@@ -45,52 +43,44 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main);
 
 		mTitle = mDrawerTitle = getTitle();
-
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
-
 		// nav drawer icons from resources
 		navMenuIcons = getResources()
 				.obtainTypedArray(R.array.nav_drawer_icons);
-
 		mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 		mDrawerList = (ListView) findViewById(R.id.list_slidermenu);
-
 		navDrawerItems = new ArrayList<NavDrawerItem>();
-
 		// adding nav drawer items to array
-		// Home
+		// Скидки
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
-		// Find People
+		// Карта скидок
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
-		// Photos
+		// О профкоме
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
-		// Communities, Will add a counter here
+		// О программе
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
-		// Pages
+		// Рассказать друзьям
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[4], navMenuIcons.getResourceId(4, -1)));
-		// What's hot, We  will add a counter here
+		// Выход
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons.getResourceId(5, -1)));
-		
-
 		// Recycle the typed array
 		navMenuIcons.recycle();
-
 		mDrawerList.setOnItemClickListener(new SlideMenuClickListener());
-
 		// setting the nav drawer list adapter
 		adapter = new NavDrawerListAdapter(getApplicationContext(),
 				navDrawerItems);
 		mDrawerList.setAdapter(adapter);
-
 		// enabling action bar app icon and behaving it as toggle button
 		getActionBar().setDisplayHomeAsUpEnabled(true);
-		//getActionBar().setHomeButtonEnabled(true);
+		getActionBar().setHomeButtonEnabled(true);
 
 		mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-				R.drawable.ic_drawer, //nav menu toggle icon
-				R.string.app_name, // nav drawer open - description for accessibility
-				R.string.app_name // nav drawer close - description for accessibility
+				R.drawable.ic_drawer, // nav menu toggle icon
+				R.string.app_name, // nav drawer open - description for
+									// accessibility
+				R.string.app_name // nav drawer close - description for
+									// accessibility
 		) {
 			public void onDrawerClosed(View view) {
 				getActionBar().setTitle(mTitle);
@@ -115,7 +105,7 @@ public class MainActivity extends Activity {
 		thread.start();
 		Intent intent = new Intent(MainActivity.this, SplashScreen.class);
 		startActivity(intent);
-		
+
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
 			displayView(0);
@@ -137,18 +127,18 @@ public class MainActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.main, menu);
-        return super.onPrepareOptionsMenu(menu);
+		 getMenuInflater().inflate(R.menu.main, menu);
+		 return super.onPrepareOptionsMenu(menu);
 	}
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-        // The action bar home/up action should open or close the drawer.
-        // ActionBarDrawerToggle will take care of this.
-        if (mDrawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
+		// The action bar home/up action should open or close the drawer.
+		// ActionBarDrawerToggle will take care of this.
+		if (mDrawerToggle.onOptionsItemSelected(item)) {
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
 	}
 
 	/* *
@@ -193,7 +183,6 @@ public class MainActivity extends Activity {
 			FragmentManager fragmentManager = getFragmentManager();
 			fragmentManager.beginTransaction()
 					.replace(R.id.frame_container, fragment).commit();
-
 			// update selected item and title, then close the drawer
 			mDrawerList.setItemChecked(position, true);
 			mDrawerList.setSelection(position);
@@ -204,24 +193,7 @@ public class MainActivity extends Activity {
 			Log.e("MainActivity", "Error in creating fragment");
 		}
 	}
-	
-	private void ProfkomFragment() {
-		Intent intent = new Intent(this, ProfkomFragment.class);
-		startActivity(intent);
-	}
-	
-	private void MapFragment() {
-		Intent intent = new Intent(this, MapFragmentAll.class);
-		startActivity(intent);
-	}
 
-	private void ShareFragment() {
-		Intent shareIntent = new Intent(Intent.ACTION_SEND);
-		  shareIntent.setType("text/plain");
-		  shareIntent.putExtra(Intent.EXTRA_TEXT, "Я пользуюсь приложением #ПрофкомДисконт на #Android!");
-		  startActivity(Intent.createChooser(shareIntent, "Рассказать друзьям"));
-	}
-	
 	@Override
 	public void setTitle(CharSequence title) {
 		mTitle = title;
@@ -247,12 +219,31 @@ public class MainActivity extends Activity {
 		mDrawerToggle.onConfigurationChanged(newConfig);
 	}
 
-	public void ShowDiscontFragment(int image, String text, DiskontData tel, String site) {
-	Intent intent = new Intent(this, DiscontFragment.class);
-	intent.putExtra("image", image);
-	intent.putExtra("text", text);
-	intent.putExtra("phone", new SharableObject(tel));
-	intent.putExtra("sites", site);
-	startActivity(intent);
-}
+	public void ShowDiscontFragment(int image, String text, DiskontData tel,
+			String site) {
+		Intent intent = new Intent(this, DiscontFragment.class);
+		intent.putExtra("image", image);
+		intent.putExtra("text", text);
+		intent.putExtra("phone", new SharableObject(tel));
+		intent.putExtra("sites", site);
+		startActivity(intent);
+	}
+
+	private void ProfkomFragment() {
+		Intent intent = new Intent(this, ProfkomFragment.class);
+		startActivity(intent);
+	}
+
+	private void MapFragment() {
+		Intent intent = new Intent(this, MapFragmentAll.class);
+		startActivity(intent);
+	}
+
+	private void ShareFragment() {
+		Intent shareIntent = new Intent(Intent.ACTION_SEND);
+		shareIntent.setType("text/plain");
+		shareIntent.putExtra(Intent.EXTRA_TEXT,
+				"Я пользуюсь приложением #ПрофкомДисконт на #Android!");
+		startActivity(Intent.createChooser(shareIntent, "Рассказать друзьям"));
+	}
 }
