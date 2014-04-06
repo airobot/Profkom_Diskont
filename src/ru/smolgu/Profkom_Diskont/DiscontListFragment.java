@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -633,8 +634,8 @@ public class DiscontListFragment extends Fragment implements OnItemClickListener
 		DiscontAdapter catAdapter;
 		catAdapter = new DiscontAdapter(getActivity(), catalog);
 
-		View rootView = inflater.inflate(R.layout.discont_list_fragment,
-				container, false);
+		View rootView = inflater.inflate(R.layout.discont_list_fragment, container, false);
+		
 		ListView list = (ListView) rootView.findViewById(R.id.discont_list);
 		list.setOnItemClickListener(this);
 		list.setAdapter(catAdapter);

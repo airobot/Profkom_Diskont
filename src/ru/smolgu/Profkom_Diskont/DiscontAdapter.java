@@ -42,11 +42,6 @@ public class DiscontAdapter extends BaseAdapter {
 		}
 
 		ListData p = ((ListData) getItem(position));
-
-		// заполняем View в пункте списка данными
-		// ((TextView) view.findViewById(R.id.discont_title)).setText(p.title);
-		// ((TextView) view.findViewById(R.id.tv2)).setText("Цена: "+p.price +
-		// " псевдоденег");
 		((ImageView) view.findViewById(R.id.iv1)).setImageResource(p.image);
 		return view;
 	}

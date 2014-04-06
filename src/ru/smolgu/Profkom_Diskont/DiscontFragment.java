@@ -40,10 +40,6 @@ public class DiscontFragment extends Activity {
 		String text = intent.getStringExtra("text");
 		textView.setText(Html.fromHtml(text));
 
-//		WebView view = (WebView)findViewById(R.id.text_discont_fragment);
-//	    view.setVerticalScrollBarEnabled(false);
-//	    view.loadData(getString(R.string.o_programme), "text/html", "utf-8");
-		
 		Diskont_Data = (DiskontData) ((SharableObject) intent
 				.getParcelableExtra("phone")).getObject();
 		Button bnt_phone = (Button) findViewById(R.id.btn_telefon);
