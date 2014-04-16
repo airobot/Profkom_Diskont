@@ -2,6 +2,8 @@ package ru.smolgu.Profkom_Diskont;
 
 import java.util.ArrayList;
 
+import com.google.android.gms.maps.MapFragment;
+
 import ru.smolgu.Profkom_Diskont.nav.NavDrawerItem;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -15,7 +17,6 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -161,7 +162,7 @@ public class MainActivity extends Activity {
 			fragment = new DiscontListFragment(this);
 			break;
 		case 1:
-			MapFragment();
+			fragment = new MapFragment();
 			break;
 		case 2:
 			ProfkomFragment();
@@ -234,10 +235,10 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
-	private void MapFragment() {
-		Intent intent = new Intent(this, MapFragmentAll.class);
-		startActivity(intent);
-	}
+//	private void MapFragment() {
+//		Intent intent = new Intent(this, MapFragmentAll.class);
+//		startActivity(intent);
+//	}
 
 	private void ShareFragment() {
 		Intent shareIntent = new Intent(Intent.ACTION_SEND);

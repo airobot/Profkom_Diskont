@@ -4,10 +4,12 @@ import java.util.ArrayList;
 
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
@@ -639,6 +641,20 @@ public class DiscontListFragment extends Fragment implements OnItemClickListener
 		ListView list = (ListView) rootView.findViewById(R.id.discont_list);
 		list.setOnItemClickListener(this);
 		list.setAdapter(catAdapter);
+		
+		list.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				Log.e("scroll", "Hello");
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				
+			}
+		});
 		return rootView;
 	}
 
