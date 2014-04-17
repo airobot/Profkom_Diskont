@@ -2,15 +2,10 @@ package ru.smolgu.Profkom_Diskont;
 
 import java.util.ArrayList;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 
@@ -22,9 +17,9 @@ import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MapFragmentViewDiskont extends FragmentActivity implements
 		LocationListener {
-
-	ArrayList<LatLng> dots;
 	GoogleMap googleMap;
+	ArrayList<LatLng> dots;
+	SupportMapFragment mapFragment;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,14 +30,19 @@ public class MapFragmentViewDiskont extends FragmentActivity implements
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		Intent intent = getIntent();
 
-		SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
-	      googleMap = mapFragment.getMap();
-	        if (googleMap == null) {
-	          finish();
-	          return;
-	        }
-	        init();  
-	    }
+		LatLng latLng = new LatLng(54.772278, 32.028839);
+		mapFragment = (SupportMapFragment) getSupportFragmentManager()
+				.findFragmentById(R.id.map);
+		googleMap = mapFragment.getMap();
+		googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+		googleMap.getUiSettings().isMyLocationButtonEnabled();
+		googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+		if (googleMap == null) {
+			finish();
+			return;
+		}
+		init();
+	}
 
 	private void init() {
 		Intent intent = getIntent();
@@ -53,37 +53,37 @@ public class MapFragmentViewDiskont extends FragmentActivity implements
 	}
 
 	@Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-        case android.R.id.home:
-            finish();
-            return true;
-        default:
-            return super.onOptionsItemSelected(item);
-        }
-    }
-
-	@Override
 	public void onLocationChanged(Location location) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onStatusChanged(String provider, int status, Bundle extras) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onProviderEnabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void onProviderDisabled(String provider) {
 		// TODO Auto-generated method stub
-		
+
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }

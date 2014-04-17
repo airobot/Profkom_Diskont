@@ -162,7 +162,7 @@ public class MainActivity extends Activity {
 			fragment = new DiscontListFragment(this);
 			break;
 		case 1:
-			fragment = new MapFragment();
+			MapFragment();
 			break;
 		case 2:
 			ProfkomFragment();
@@ -235,10 +235,10 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 
-//	private void MapFragment() {
-//		Intent intent = new Intent(this, MapFragmentAll.class);
-//		startActivity(intent);
-//	}
+	private void MapFragment() {
+		Intent intent = new Intent(this, MapFragmentAll.class);
+		startActivity(intent);
+	}
 
 	private void ShareFragment() {
 		Intent shareIntent = new Intent(Intent.ACTION_SEND);

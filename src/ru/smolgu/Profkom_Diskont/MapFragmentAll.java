@@ -1,10 +1,11 @@
 package ru.smolgu.Profkom_Diskont;
 
+import android.content.Intent;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v4.app.FragmentActivity;
+import android.view.MenuItem;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -12,28 +13,35 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapFragmentAll extends Fragment {
-	public MapFragmentAll(MainActivity mainActivity) {
-	}
+public class MapFragmentAll extends FragmentActivity implements
+LocationListener  {
 
 	GoogleMap googleMap;
+	SupportMapFragment mapFragment;
+	LatLng latLng = new LatLng(54.772278, 32.028839);
 
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.map_view);
 
-		View v = inflater.inflate(R.layout.map_view, container);
+		// Создание кнопки назад.
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		Intent intent = getIntent();
 
-		googleMap = ((SupportMapFragment) getFragmentManager()
-				.findFragmentById(R.id.map)).getMap();
+		mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.map);
+		googleMap = mapFragment.getMap();
+		googleMap.getUiSettings().isMyLocationButtonEnabled();
 		googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-		googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+		googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(latLng, 12));
+		if (googleMap == null) {
+			finish();
+			return;
+		}
 		init();
-		
-		return v;
 	}
 
 	private void init() {
-
 		// Добавляем на карту точки скидок
 		googleMap.addMarker(new MarkerOptions().position(
 				new LatLng(54.772278, 32.028839)).title("Ле бо бо"));
@@ -136,5 +144,40 @@ public class MapFragmentAll extends Fragment {
 				new LatLng(54.769759, 32.022375)).title("Евроторг"));
 		googleMap.addMarker(new MarkerOptions().position(
 				new LatLng(54.778173, 32.016123)).title("Евроторг"));
+	}
+
+	@Override
+	public void onLocationChanged(Location location) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onStatusChanged(String provider, int status, Bundle extras) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderEnabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void onProviderDisabled(String provider) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case android.R.id.home:
+			finish();
+			return true;
+		default:
+			return super.onOptionsItemSelected(item);
+		}
 	}
 }

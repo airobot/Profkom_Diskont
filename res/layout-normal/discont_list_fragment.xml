@@ -3,6 +3,6 @@
     android:id="@+id/discont_list"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#e4e4e4"
+    android:background="@null"
     android:scrollingCache="true" >
 </ListView>
