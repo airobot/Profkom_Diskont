@@ -2,7 +2,9 @@
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/discont_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#e4e4e4"
+    android:overScrollFooter="@color/white_smoke"
+    android:overScrollHeader="@color/white_smoke"
     android:scrollingCache="true" >
 </ListView>

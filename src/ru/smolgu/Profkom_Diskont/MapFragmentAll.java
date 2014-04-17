@@ -18,7 +18,7 @@ LocationListener  {
 
 	GoogleMap googleMap;
 	SupportMapFragment mapFragment;
-	LatLng latLng = new LatLng(54.772278, 32.028839);
+	LatLng latLng = new LatLng(54.771172, 32.053089);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

@@ -30,7 +30,7 @@ public class MapFragmentViewDiskont extends FragmentActivity implements
 		getActionBar().setDisplayHomeAsUpEnabled(true);
 		Intent intent = getIntent();
 
-		LatLng latLng = new LatLng(54.772278, 32.028839);
+		LatLng latLng = new LatLng(54.771172, 32.053089);
 		mapFragment = (SupportMapFragment) getSupportFragmentManager()
 				.findFragmentById(R.id.map);
 		googleMap = mapFragment.getMap();
